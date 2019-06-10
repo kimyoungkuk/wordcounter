@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import logging
 
 # Create your views here.
 
@@ -22,4 +23,7 @@ def result(request):
         else:
             word_dictionary[word]=1
 
+    sorted_word_list=sorted(word_dictionary.items(), key=(lambda x : x[1]), reverse = True)
+    word_dictionary=dict(sorted_word_list)
+    logging.error(word_dictionary)
     return render(request, 'result.html',{'full':text, 'total':len(words), 'dictionary':word_dictionary.items()})
