@@ -19,13 +19,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'n2cg*f3@t2opq(u1k9kk)u7ye$5)9tkxx$1s=yw)uz+@(cwo0w'
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'n2cg*f3@t2opq(u1k9kk)u7ye$5)9tkxx$1s=yw)uz+@(cwo0w'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
