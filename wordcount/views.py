@@ -1,11 +1,12 @@
 from django.shortcuts import render
 import logging
-
+from .models import Post
 # Create your views here.
 
 def home(request):
+    posts = Post.objects
 
-    return render(request, 'home.html')
+    return render(request, 'home.html',{'posts':posts})
 
 
 def about(request):
@@ -13,7 +14,13 @@ def about(request):
     return render(request, 'about.html')
 
 def result(request):
+    title = request.GET['title']
     text = request.GET['fulltext']
+    post=Post()
+    post.title=title
+    post.body=text
+    post.save()
+
     words = text.split()
     word_dictionary = {}
 

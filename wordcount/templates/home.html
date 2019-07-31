@@ -30,18 +30,24 @@
 	color: #ffffff;
 	border-radius: 4px;
 	padding: 2px 8px;
-	font-soze: 18px;
+	font-size: 18px;
 }
 </style>
 
 
 <h1> 안녕하세요, 여기에서 열심히 글자를 세세요! </h1>
-
 <a href="{%url 'about' %}">ABOUT</a>
 
 
 <form action="{%url 'result' %}" class="form_box">
-    <textarea class="textarea_field" cols="40" row="10" name="fulltext"></textarea>
+	제목 : <input type="text" name="title">
+	<br>
+	내용 : <textarea class="textarea_field" cols="40" row="10" name="fulltext"></textarea>
     <br>
     <input class="write_buuton" type="submit" value="Count!">
 </form>
+{% for post in posts.all %}
+<h1>{{post.title}}</h1>
+<p>{{post.pub_date}}</p>
+<p>{{post.body}}</p>
+{%endfor%}
